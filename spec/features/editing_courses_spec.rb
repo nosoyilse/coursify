@@ -8,8 +8,7 @@ RSpec.feature "Admins pueden editar proyectos" do
 		click_link "Editar"
     	fill_in "Name", with: "Matemáticas Avanzadas"
     	click_button "Guardar"
+		expect(page).to have_content "Se ha actualizado el curso."
 		expect(page).to have_content "Matemáticas Avanzadas"
-
-
 	end
 end

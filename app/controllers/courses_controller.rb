@@ -23,12 +23,25 @@ class CoursesController < ApplicationController
 	end
 
 	def edit
+		@course = Course.find(params[:id])
 	end
 
 	def update
+		@course = Course.find(params[:id])
+		if @course.update(course_params)
+			flash[:notice] = "Se ha actualizado el curso."
+			redirect_to @course
+		else
+			flash[:error] = "No se ha actualizado el curso."
+			render action: "edit"
+		end
 	end
 
 	def destroy
+		@course = Course.find(params[:id])
+		@course.destroy
+		flash[:notice] = "El curso se ha eliminado."
+		redirect_to courses_path
 	end
 
 	private
