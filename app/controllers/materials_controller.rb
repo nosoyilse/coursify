@@ -40,6 +40,11 @@ class MaterialsController < ApplicationController
 	end
 
 	def destroy
+		@course = Course.find(params[:course_id])
+		@material = @course.materials.find(params[:id])
+		@material.destroy
+		flash[:notice] = "El material se ha eliminado."
+		redirect_to @course
 	end
 
 	private 
