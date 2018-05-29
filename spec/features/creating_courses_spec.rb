@@ -9,5 +9,12 @@ RSpec.feature "Admins can create projects" do
 		click_button "Guardar"
 		expect(page).to have_content "Se ha creado el curso."
 	end
+
+	scenario "los atributos nos son válidos" do 
+		visit "/"
+		click_link "Nuevo Curso"
+		click_button "Guardar"
+		expect(page).to have_content "No se ha creado el curso."
+	end
 end
 

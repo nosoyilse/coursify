@@ -14,6 +14,8 @@ class MaterialsController < ApplicationController
 			flash[:notice] = "Se ha guardado el archivo."
 			redirect_to @course
 		else
+			flash[:error] = "No se ha guardado el material."
+
 			render action: "new"
 		end
 	end
@@ -31,6 +33,8 @@ class MaterialsController < ApplicationController
 			flash[:notice] = "Se ha actualizado el material."
 			redirect_to [@course, @material]
 		else
+			flash[:error] = "No se ha actualizado el material."
+
 			render action: "edit"
 		end
 	end
