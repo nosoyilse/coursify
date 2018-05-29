@@ -24,9 +24,19 @@ class MaterialsController < ApplicationController
 	end
 
 	def edit
+		@course = Course.find(params[:course_id])
+		@material = @course.materials.find(params[:id])
 	end
 
 	def update
+		@course = Course.find(params[:course_id])
+		@material = @course.materials.find(params[:id])
+		if @material.update(material_params)
+			flash[:notice] = "Se ha actualizado el material."
+			redirect_to [@course, @material]
+		else
+			render action: "edit"
+		end
 	end
 
 	def destroy
